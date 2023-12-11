@@ -4,10 +4,6 @@ import { useEffect } from "react";
 import * as localStorage from "./../../storage";
 
 function ContactList(props) {
-  // componentDidUpdate() {
-  //   localStorage.save("contacts", this.props.contacts);
-  // }
-
   console.log("props-contacts: ", props.contacts);
 
   useEffect(() => {
@@ -33,26 +29,6 @@ function ContactList(props) {
       </ul>
     </>
   );
-
-  // return (
-  //   <>
-  //     <ul>
-  //       {props.name.map((name, index) => {
-  //         return (
-  //           <li key={props.id[index]}>
-  //             {name}: {props.number[index]}
-  //             <button
-  //               type="button"
-  //               onClick={() => props.removeItem(props.id[index])}
-  //             >
-  //               Remove
-  //             </button>
-  //           </li>
-  //         );
-  //       })}
-  //     </ul>
-  //   </>
-  // );
 }
 
 ContactList.propTypes = {

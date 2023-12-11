@@ -5,9 +5,6 @@ import "react-toastify/dist/ReactToastify.css";
 import css from "./Contacts.module.css";
 
 function ContactForm(props) {
-  // const [name, setName] = useState("");
-  // const [number, setNumber] = useState("");
-
   const notify = (name) => toast.warning(`${name} is already in contacts !`);
 
   const handleSubmit = (evt) => {
@@ -17,17 +14,8 @@ function ContactForm(props) {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
 
-
-    console.log('OnSubmit - name: ', name);
-    console.log('OnSubmit - number: ', number);
-
-    // setName(
-    //   name,
-    // );
-    //
-    // setNumber(
-    //   number,
-    // );
+    console.log("OnSubmit - name: ", name);
+    console.log("OnSubmit - number: ", number);
 
     if (props.addItem(name, number)) {
       notify(name);
