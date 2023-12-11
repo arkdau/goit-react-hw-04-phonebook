@@ -16,7 +16,6 @@ export const App = () => {
     if (checkItem(name).length === 0) {
       const arr = [{ name: name, id: nanoid(), number: number }];
 
-      // 👇️ merge arrays 👇️
       setContacts([...contacts, ...arr]);
 
       return false;
