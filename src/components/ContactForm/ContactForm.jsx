@@ -14,8 +14,8 @@ function ContactForm(props) {
     const name = form.elements.name.value;
     const number = form.elements.number.value;
 
-    console.log("OnSubmit - name: ", name);
-    console.log("OnSubmit - number: ", number);
+    // console.log("OnSubmit - name: ", name);
+    // console.log("OnSubmit - number: ", number);
 
     if (props.addItem(name, number)) {
       notify(name);

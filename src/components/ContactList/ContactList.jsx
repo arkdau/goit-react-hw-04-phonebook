@@ -4,7 +4,19 @@ import { useEffect } from "react";
 import * as localStorage from "./../../storage";
 
 function ContactList(props) {
-  console.log("props-contacts: ", props.contacts);
+  // console.log("props-contacts: ", props.contacts);
+
+  // useEffect(() => {
+  //   const upContacts = localStorage.load("contacts");
+  //   if (upContacts !== undefined) {
+  //     // this.setState({ contacts: contacts });
+  //     props.setContacts(upContacts);
+  //   }
+  //
+  //   console.log("List-contacts: ", props.contacts);
+  //   console.log("List-upContacts: ", props.contacts);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     localStorage.save("contacts", props.contacts);

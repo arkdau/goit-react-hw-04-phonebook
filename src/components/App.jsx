@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { nanoid } from "nanoid";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import Filter from "./Filter/Filter";
+import * as localStorage from "./../storage";
 
 export const App = () => {
   // const initialState = [
@@ -11,6 +12,7 @@ export const App = () => {
 
   const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState("");
+  const [isLoad, setIsLoad] = useState(false);
 
   const onAddItem = (name, number) => {
     if (checkItem(name).length === 0) {
@@ -25,8 +27,17 @@ export const App = () => {
   };
 
   useEffect(() => {
-    console.log("contacts: ", contacts);
-  }, [contacts]);
+    const upContacts = localStorage.load("contacts");
+    if (upContacts !== undefined) {
+      // this.setState({ contacts: contacts });
+      setContacts(upContacts);
+      setIsLoad(true);
+    }
+
+    console.log("App-contacts: ", contacts);
+    console.log("App-upContacts: ", contacts);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onRemoveItem = (i) => {
     setContacts(
@@ -57,11 +68,12 @@ export const App = () => {
 
       <h2>Contacts</h2>
       <Filter onChange={handleChangeInput} />
-
-      <ContactList
-        contacts={contactsFilter()}
-        removeItem={onRemoveItem}
-      />
+      {isLoad && (
+        <ContactList
+          contacts={contactsFilter()}
+          removeItem={onRemoveItem}
+        />
+      )}
     </>
   );
 };
